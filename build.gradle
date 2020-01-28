@@ -4,6 +4,13 @@ plugins {
 
 }
 
+//ajouter
+java {
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 repositories {
 
     jcenter()
@@ -12,6 +19,21 @@ repositories {
 
 dependencies {
 
+    compile project(':commun')
     compile project(':commun_javafx')
 
+}
+
+task(joueur01, dependsOn: 'classes', type: JavaExec) {
+   main = 'mortiers_javafx.Principal'
+   classpath = sourceSets.main.runtimeClasspath
+   //ajouter
+   jvmArgs('-Duser.language=fr')
+}
+
+//ajouter
+task(joueur01En, dependsOn: 'classes', type: JavaExec) {
+   main = 'quatredesuite_javafx.Principal'
+   classpath = sourceSets.main.runtimeClasspath
+   jvmArgs('-Duser.language=en')
 }
